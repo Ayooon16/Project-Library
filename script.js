@@ -1,35 +1,48 @@
-const myLibrary = [];
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
+}
 
-function Book(title, author, pages, isRead) {
-  // the constructor...
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.isRead = isRead
+class Library {
+  constructor() {
+    this.books = [];
+  }
+
+  refreshList() {
+    const table = document.getElementById('bookList');
+    table.innerHTML = '';
+
+    this.books.forEach(book => {
+      const row = document.createElement('tr');
+      Object.entries(book).forEach(([key, value]) => {
+        const td = document.createElement('td');
+        if (key === 'isRead') {
+          td.textContent = value ? 'Read' : 'Not read';
+        } else {
+          td.textContent = value;
+        }
+        row.appendChild(td);
+      });
+      table.appendChild(row);
+    });
+  }
+
+  addBook(title, author, pages, isRead) {
+    this.books.push(new Book(title, author, pages, isRead));
+    this.refreshList();
+  }
 }
-function refreshList() {
-  table = document.getElementById('bookList')
-  table.innerHTML = ''
-  myLibrary.forEach(element => {
-    console.log(element)
-    var row = document.createElement('tr')
-    Object.entries(element).map(obj => {
-      td = document.createElement("td")
-      if(obj[1] === true || obj[1] === false){
-        td.textContent = (obj[1]) ? 'Read':'Not read'
-      }
-      else{td.textContent = obj[1]}
-      
-      row.appendChild(td)
-    })
-    table.appendChild(row)
-  });
-}
+
+const myLibrary = new Library();
+
 function addBookToLibrary() {
-  title = document.getElementById('title').value
-  author = document.getElementById('author').value
-  pages = document.getElementById('pages').value
-  isRead = ((document.getElementById('isRead').checked) ? true : false)
-  myLibrary.push(new Book(title, author, pages, isRead))
-  refreshList()
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const isRead = document.getElementById('isRead').checked;
+  myLibrary.addBook(title, author, pages, isRead);
 }
