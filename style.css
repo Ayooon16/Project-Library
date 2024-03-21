@@ -1,0 +1,37 @@
+body{
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+}
+form{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex: 0 0 auto;
+}
+input[type="checkbox"][disabled] {
+    accent-color: #8c00ff;
+}
+#bookList{
+    margin-left: auto;
+}
+table{
+    width: 500px;
+    height: auto;
+}
+tr{
+    height: 80px;
+}
+td{
+    border: 1px blue solid;
+text-align: center;
+    overflow: auto;
+}
+td{
+    background-color: magenta;
+}
+td:nth-child(2),td:nth-child(4) {
+    background: red;
+  }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <form id="form" onsubmit="return false">
+        <label>Author</label><input type="text" id="author" required>
+        <label>Title</label><input type="text" id="title" required>
+        <label>Amount of pages</label><input type="text" id="pages" required>
+        <label>Read</label><input type="checkbox" name="" id="isRead">
+        <button id="submit" onclick="addBookToLibrary()">submit</button>
+
+    </form>
+
+    <table id="bookList"></table>
+</body>
+
+</html>
